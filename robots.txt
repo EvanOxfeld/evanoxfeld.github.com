@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://EvanOxfeld.github.com/sitemap.xml 
