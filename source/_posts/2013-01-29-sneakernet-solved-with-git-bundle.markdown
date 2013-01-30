@@ -1,28 +1,103 @@
 ---
 layout: post
 title: "Sneakernet Solved with Git Bundle"
-date: 2013-01-29 23:05
+date: 2013-01-30 22:48
 comments: false
 categories: git
 ---
 
-Months ago I decided to avoid using fancy office suites as much as possible for myriad reasons. I've been using Git to version control my text files and JavaScript-based presentations to great effect. Gone are the days of naming a file "Presentation DRAFT1 FINAL". Inevitably, it's not final.
+Recently I wanted to transfer a presentation from
+one machine to another, and unfortunately I was
+unable to connect to the Internet. I was in a
+classic _sneakernet_ scenario. If you haven't heard
+the term, _sneakernet_ is slang for walking media
+such as a disk or USB flash drive from one machine
+to another in order to transfer files. Bonus
+points if you bring a pedometer along.
 
-I recently wanted to move a presentation to another machine, and unfortunatel y I was unable to connect to the Internet. Time to transfer via _sneakernet_. If you haven't heard of the term, _sneakernet_ is slang for transferring files by literally walking media such as a disk or USB flash drive over to another machine. Bonus points if you have your pedometer on you.
+Ordinarily I'd copy the presentation onto a USB stick,
+transfer the presentation to the second computer, and
+be done. In a feeble attempt at version control, maybe
+I would have renamed the file "Presentation DRAFT1
+FINAL". However, this time my presentation was in
+HTML/JavaScript and already version controlled with
+Git. While I could use git to create and apply patches
+across to the unconnected machine, there's an easier
+way - _git bundle_.
 
+## Create the Git Bundle
 
+Think of _git bundle_ as zipping or tarring up your
+repository with benefits - namely that you can transfer
+the exact same git branches and commit information.
+A git bundle mimics a remote, enabling fetching,
+pulling, and diffing between machines that aren't
+otherwise connected.
 
+To create a bundle named "repo.bundle" containing
+each and every commit in the master branch: 
 
+``` console
+git bundle create repo.bundle master
+```
 
+If you anticipate transferring more commits in the
+future, tag the current commit on master.
 
-## Enter Git Bundle
+## Clone the Bundle on the Second Machine
 
-Think of git bundle as zipping or tarring up your repository with benefits - namely that your git objects transfer, allowing 
+If the repository does not already exist on the
+second machine, it's easiest to clone directly from
+the bundle.
 
-* Intro
-  * Git can solve any revision control problem
-  * (Maybe) Writing in VIM more often means using Git more often?
-* Why Use Bundle
-* Prepare the bundle
-* "Deploy" the bundle
-* Repeat
+To clone into the directory "myRepo" and check out
+the branch master:
+
+``` console
+git clone repo.bundle myRepo -b master
+```
+
+Verify the master branch. My preferred method is
+viewing a graph of the commits:
+
+``` console
+git log --oneline --decorate --graph
+```
+
+## Transferring Additional Commits
+
+We could once again bundle the entirety of the master
+branch and do a git clone on the second machine, but
+we'd sacrifice any additional work on that box.
+Instead, bundle master starting from the previous
+bundle's most recent commit:
+
+``` console
+git bundle create more.bundle lastBundleTag..master
+```
+
+On the second machine, verify the bundle then pull
+the contents into master:
+
+``` console
+git bundle verify more.bundle
+git pull more.bundle master
+```
+
+Once again, verify the master branch and the recently
+transferred commits:
+
+``` console
+git log --oneline --decorate --graph
+```
+
+## Conclusion
+
+Using git bundle makes version controlling repositories
+across unconnected machines simple. Additionally, all
+the elements of the git workflow remain at your beck
+and call. For example, consider creating a long
+running branch for changes that are only applicable to
+the second machine for reasons such as easy diffing
+between machines.
+
