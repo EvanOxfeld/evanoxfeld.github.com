@@ -4,6 +4,8 @@ title: "Sneakernet Solved with Git Bundle"
 date: 2013-01-30 22:48
 comments: false
 categories: git
+description: "Using git bundle to transfer git branches and commit information to an unconnected machine"
+keywords: "git, git bundle, sneakernet"
 ---
 
 Recently I wanted to transfer a presentation from
