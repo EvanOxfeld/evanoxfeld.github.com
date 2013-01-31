@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | Evan Oxfeld]]></title>
+  <link href="http://EvanOxfeld.github.com/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://EvanOxfeld.github.com/"/>
+  <updated>2013-01-30T22:50:00-05:00</updated>
+  <id>http://EvanOxfeld.github.com/</id>
+  <author>
+    <name><![CDATA[Evan Oxfeld]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Sneakernet Solved with Git Bundle]]></title>
+    <link href="http://EvanOxfeld.github.com/blog/2013/01/30/sneakernet-solved-with-git-bundle/"/>
+    <updated>2013-01-30T22:48:00-05:00</updated>
+    <id>http://EvanOxfeld.github.com/blog/2013/01/30/sneakernet-solved-with-git-bundle</id>
+    <content type="html"><![CDATA[<p>Recently I wanted to transfer a presentation from
+one machine to another, and unfortunately I was
+unable to connect to the Internet. I was in a
+classic <em>sneakernet</em> scenario. If you haven't heard
+the term, <em>sneakernet</em> is slang for walking media
+such as a disk or USB flash drive from one machine
+to another in order to transfer files. Bonus
+points if you bring a pedometer along.</p>
+
+<p>Ordinarily I'd copy the presentation onto a USB stick,
+transfer the presentation to the second computer, and
+be done. In a feeble attempt at version control, maybe
+I would have renamed the file "Presentation DRAFT1
+FINAL". However, this time my presentation was in
+HTML/JavaScript and already version controlled with
+Git. While I could use git to create and apply patches
+across to the unconnected machine, there's an easier
+way - <em>git bundle</em>.</p>
+
+<h2>Create the Git Bundle</h2>
+
+<p>Think of <em>git bundle</em> as zipping or tarring up your
+repository with benefits - namely that you can transfer
+the exact same git branches and commit information.
+A git bundle mimics a remote, enabling fetching,
+pulling, and diffing between machines that aren't
+otherwise connected.</p>
+
+<p>To create a bundle named "repo.bundle" containing
+each and every commit in the master branch:</p>
+
+<p><code>console
+git bundle create repo.bundle master
+</code></p>
+
+<p>If you anticipate transferring more commits in the
+future, tag the current commit on master.</p>
+
+<h2>Clone the Bundle on the Second Machine</h2>
+
+<p>If the repository does not already exist on the
+second machine, it's easiest to clone directly from
+the bundle.</p>
+
+<p>To clone into the directory "myRepo" and check out
+the branch master:</p>
+
+<p><code>console
+git clone repo.bundle myRepo -b master
+</code></p>
+
+<p>Verify the master branch. My preferred method is
+viewing a graph of the commits:</p>
+
+<p><code>console
+git log --oneline --decorate --graph
+</code></p>
+
+<h2>Transferring Additional Commits</h2>
+
+<p>We could once again bundle the entirety of the master
+branch and do a git clone on the second machine, but
+we'd sacrifice any additional work on that box.
+Instead, bundle master starting from the previous
+bundle's most recent commit:</p>
+
+<p><code>console
+git bundle create more.bundle lastBundleTag..master
+</code></p>
+
+<p>On the second machine, verify the bundle then pull
+the contents into master:</p>
+
+<p><code>console
+git bundle verify more.bundle
+git pull more.bundle master
+</code></p>
+
+<p>Once again, verify the master branch and the recently
+transferred commits:</p>
+
+<p><code>console
+git log --oneline --decorate --graph
+</code></p>
+
+<h2>Conclusion</h2>
+
+<p>Using git bundle makes version controlling repositories
+across unconnected machines simple. Additionally, all
+the elements of the git workflow remain at your beck
+and call. For example, consider creating a long
+running branch for changes that are only applicable to
+the second machine for reasons such as easy diffing
+between machines.</p>
+]]></content>
+  </entry>
+  
+</feed>

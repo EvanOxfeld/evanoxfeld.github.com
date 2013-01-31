@@ -4,7 +4,7 @@
   <title><![CDATA[Evan Oxfeld]]></title>
   <link href="http://EvanOxfeld.github.com/atom.xml" rel="self"/>
   <link href="http://EvanOxfeld.github.com/"/>
-  <updated>2013-01-27T19:14:03-05:00</updated>
+  <updated>2013-01-30T22:50:00-05:00</updated>
   <id>http://EvanOxfeld.github.com/</id>
   <author>
     <name><![CDATA[Evan Oxfeld]]></name>
@@ -12,5 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sneakernet Solved with Git Bundle]]></title>
+    <link href="http://EvanOxfeld.github.com/blog/2013/01/30/sneakernet-solved-with-git-bundle/"/>
+    <updated>2013-01-30T22:48:00-05:00</updated>
+    <id>http://EvanOxfeld.github.com/blog/2013/01/30/sneakernet-solved-with-git-bundle</id>
+    <content type="html"><![CDATA[<p>Recently I wanted to transfer a presentation from
+one machine to another, and unfortunately I was
+unable to connect to the Internet. I was in a
+classic <em>sneakernet</em> scenario. If you haven&#8217;t heard
+the term, <em>sneakernet</em> is slang for walking media
+such as a disk or USB flash drive from one machine
+to another in order to transfer files. Bonus
+points if you bring a pedometer along.</p>
+
+<p>Ordinarily I&#8217;d copy the presentation onto a USB stick,
+transfer the presentation to the second computer, and
+be done. In a feeble attempt at version control, maybe
+I would have renamed the file &#8220;Presentation DRAFT1
+FINAL&#8221;. However, this time my presentation was in
+HTML/JavaScript and already version controlled with
+Git. While I could use git to create and apply patches
+across to the unconnected machine, there&#8217;s an easier
+way - <em>git bundle</em>.</p>
+
+<h2>Create the Git Bundle</h2>
+
+<p>Think of <em>git bundle</em> as zipping or tarring up your
+repository with benefits - namely that you can transfer
+the exact same git branches and commit information.
+A git bundle mimics a remote, enabling fetching,
+pulling, and diffing between machines that aren&#8217;t
+otherwise connected.</p>
+
+<p>To create a bundle named &#8220;repo.bundle&#8221; containing
+each and every commit in the master branch:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git bundle create repo.bundle master</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you anticipate transferring more commits in the
+future, tag the current commit on master.</p>
+
+<h2>Clone the Bundle on the Second Machine</h2>
+
+<p>If the repository does not already exist on the
+second machine, it&#8217;s easiest to clone directly from
+the bundle.</p>
+
+<p>To clone into the directory &#8220;myRepo&#8221; and check out
+the branch master:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git clone repo.bundle myRepo -b master</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Verify the master branch. My preferred method is
+viewing a graph of the commits:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git log --oneline --decorate --graph</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Transferring Additional Commits</h2>
+
+<p>We could once again bundle the entirety of the master
+branch and do a git clone on the second machine, but
+we&#8217;d sacrifice any additional work on that box.
+Instead, bundle master starting from the previous
+bundle&#8217;s most recent commit:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git bundle create more.bundle lastBundleTag..master</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On the second machine, verify the bundle then pull
+the contents into master:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git bundle verify more.bundle</span>
+</span><span class='line'><span class="go">git pull more.bundle master</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Once again, verify the master branch and the recently
+transferred commits:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git log --oneline --decorate --graph</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Conclusion</h2>
+
+<p>Using git bundle makes version controlling repositories
+across unconnected machines simple. Additionally, all
+the elements of the git workflow remain at your beck
+and call. For example, consider creating a long
+running branch for changes that are only applicable to
+the second machine for reasons such as easy diffing
+between machines.</p>
+]]></content>
+  </entry>
   
 </feed>
