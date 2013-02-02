@@ -11,7 +11,7 @@
   
   <meta name="description" content="Recently I wanted to transfer a presentation from
 one machine to another, and unfortunately I was
-unable to connect to the Internet. I was in a &hellip;">
+unable to connect to the Internet. Like life when &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,12 +107,13 @@ unable to connect to the Internet. I was in a &hellip;">
 
   <div class="entry-content"><p>Recently I wanted to transfer a presentation from
 one machine to another, and unfortunately I was
-unable to connect to the Internet. I was in a
-classic <em>sneakernet</em> scenario. If you haven&#8217;t heard
-the term, <em>sneakernet</em> is slang for walking media
-such as a disk or USB flash drive from one machine
-to another in order to transfer files. Bonus
-points if you bring a pedometer along.</p>
+unable to connect to the Internet. Like life when it
+was entirely offline or whenever Github is vexingly
+down, I was in a classic <em>sneakernet</em> scenario. If you
+haven&#8217;t heard the term, <em>sneakernet</em> is slang for
+walking media such as a disk or USB flash drive from
+one machine to another in order to transfer files.
+Bonus points if you bring a pedometer along.</p>
 
 <p>Ordinarily I&#8217;d copy the presentation onto a USB stick,
 transfer the presentation to the second computer, and
@@ -128,10 +129,10 @@ way - <em>git bundle</em>.</p>
 
 <p>Think of <em>git bundle</em> as zipping or tarring up your
 repository with benefits - namely that you can transfer
-the exact same git branches and commit information.
-A git bundle mimics a remote, enabling fetching,
-pulling, and diffing between machines that aren&#8217;t
-otherwise connected.</p>
+the exact git objects that store your commits, branches,
+and tags. A git bundle mimics a remote, enabling
+fetching, pulling, and diffing between machines that
+aren&#8217;t otherwise connected.</p>
 
 <p>To create a bundle named &#8220;repo.bundle&#8221; containing
 each and every commit in the master branch:</p>
@@ -141,8 +142,8 @@ each and every commit in the master branch:</p>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>If you anticipate transferring more commits in the
-future, tag the current commit on master.</p>
+<p>Especially if you anticipate transferring more commits
+in the future, tag the current commit on master.</p>
 
 <h2>Clone the Bundle on the Second Machine</h2>
 
