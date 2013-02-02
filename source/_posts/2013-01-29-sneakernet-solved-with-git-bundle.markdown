@@ -10,12 +10,13 @@ keywords: "git, git bundle, sneakernet"
 
 Recently I wanted to transfer a presentation from
 one machine to another, and unfortunately I was
-unable to connect to the Internet. I was in a
-classic _sneakernet_ scenario. If you haven't heard
-the term, _sneakernet_ is slang for walking media
-such as a disk or USB flash drive from one machine
-to another in order to transfer files. Bonus
-points if you bring a pedometer along.
+unable to connect to the Internet. Like life when it
+was entirely offline or whenever Github is vexingly
+down, I was in a classic _sneakernet_ scenario. If you
+haven't heard the term, _sneakernet_ is slang for
+walking media such as a disk or USB flash drive from
+one machine to another in order to transfer files.
+Bonus points if you bring a pedometer along.
 
 Ordinarily I'd copy the presentation onto a USB stick,
 transfer the presentation to the second computer, and
@@ -31,10 +32,10 @@ way - _git bundle_.
 
 Think of _git bundle_ as zipping or tarring up your
 repository with benefits - namely that you can transfer
-the exact same git branches and commit information.
-A git bundle mimics a remote, enabling fetching,
-pulling, and diffing between machines that aren't
-otherwise connected.
+the exact git objects that store your commits, branches,
+and tags. A git bundle mimics a remote, enabling
+fetching, pulling, and diffing between machines that
+aren't otherwise connected.
 
 To create a bundle named "repo.bundle" containing
 each and every commit in the master branch: 
@@ -43,8 +44,8 @@ each and every commit in the master branch:
 git bundle create repo.bundle master
 ```
 
-If you anticipate transferring more commits in the
-future, tag the current commit on master.
+Especially if you anticipate transferring more commits
+in the future, tag the current commit on master.
 
 ## Clone the Bundle on the Second Machine
 
