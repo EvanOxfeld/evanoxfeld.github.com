@@ -4,7 +4,7 @@
   <title><![CDATA[Evan Oxfeld]]></title>
   <link href="http://EvanOxfeld.github.com/atom.xml" rel="self"/>
   <link href="http://EvanOxfeld.github.com/"/>
-  <updated>2013-02-01T23:21:32-05:00</updated>
+  <updated>2013-02-02T14:01:58-05:00</updated>
   <id>http://EvanOxfeld.github.com/</id>
   <author>
     <name><![CDATA[Evan Oxfeld]]></name>
@@ -20,7 +20,7 @@
     <id>http://EvanOxfeld.github.com/blog/2013/01/30/sneakernet-solved-with-git-bundle</id>
     <content type="html"><![CDATA[<p>Recently I wanted to transfer a presentation from
 one machine to another, and unfortunately I was
-unable to connect to the Internet. Like life when it
+unable to connect to the Internet. Similar to life when it
 was entirely offline or whenever Github is vexingly
 down, I was in a classic <em>sneakernet</em> scenario. If you
 haven&#8217;t heard the term, <em>sneakernet</em> is slang for
