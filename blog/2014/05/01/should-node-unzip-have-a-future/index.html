@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Evan Oxfeld</title>
+  <title>Should Node-Unzip Have a Future? - Evan Oxfeld</title>
   <meta name="author" content="Evan Oxfeld">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://EvanOxfeld.github.com/">
+  <link rel="canonical" href="http://EvanOxfeld.github.com/blog/2014/05/01/should-node-unzip-have-a-future/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -72,15 +72,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/05/01/should-node-unzip-have-a-future/">Should Node-Unzip Have a Future?</a></h1>
+      <h1 class="entry-title">Should Node-Unzip Have a Future?</h1>
     
     
       <p class="meta">
@@ -103,7 +100,7 @@
   </header>
 
 
-  <div class="entry-content"><p><strong><em>Cross posted from <a href="https://github.com/EvanOxfeld/node-unzip/issues/50">https://github.com/EvanOxfeld/node-unzip/issues/50</a></em></strong></p>
+<div class="entry-content"><p><strong><em>Cross posted from <a href="https://github.com/EvanOxfeld/node-unzip/issues/50">https://github.com/EvanOxfeld/node-unzip/issues/50</a></em></strong></p>
 
 <p>I continue to be floored by the response to <a href="https://github.com/EvanOxfeld/node-unzip">node-unzip</a>. While the original implementation was written on a lark, I carried on as a means to better understand streams, arguably the killer feature of NodeJS. Since that time, I&#8217;ve changed companies, ceased personally using this library, and experienced a number of major life events, particularly becoming a father.</p>
 
@@ -111,22 +108,16 @@
 
 <p>Thank you and let me know your thoughts on the <a href="https://github.com/EvanOxfeld/node-unzip/issues/50">project on GitHub</a>.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/30/sneakernet-solved-with-git-bundle/">Sneakernet Solved With Git Bundle</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Evan Oxfeld</span></span>
+
+      
 
 
 
@@ -138,128 +129,40 @@
   
 
 
-<time datetime="2013-01-30T22:48:00-05:00" pubdate data-updated="true">Jan 30<span>th</span>, 2013</time>
-        
-      </p>
+<time datetime="2014-05-01T21:18:00-04:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/nodejs/'>nodejs</a>, <a class='category' href='/blog/categories/open-source/'>open source</a>, <a class='category' href='/blog/categories/unzip/'>unzip</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>Recently I wanted to transfer a presentation from
-one machine to another, and unfortunately I was
-unable to connect to the Internet. Similar to life when it
-was entirely offline or whenever Github is vexingly
-down, I was in a classic <em>sneakernet</em> scenario. If you
-haven&#8217;t heard the term, <em>sneakernet</em> is slang for
-walking media such as a disk or USB flash drive from
-one machine to another in order to transfer files.
-Bonus points if you bring a pedometer along.</p>
-
-<p>Ordinarily I&#8217;d copy the presentation onto a USB stick,
-transfer the presentation to the second computer, and
-be done. In a feeble attempt at version control, maybe
-I would have renamed the file &#8220;Presentation DRAFT1
-FINAL&#8221;. However, this time my presentation was in
-HTML/JavaScript and already version controlled with
-Git. While I could use git to create and apply patches
-across to the unconnected machine, there&#8217;s an easier
-way - <em>git bundle</em>.</p>
-
-<h2>Create the Git Bundle</h2>
-
-<p>Think of <em>git bundle</em> as zipping or tarring up your
-repository with benefits - namely that you can transfer
-the exact git objects that store your commits, branches,
-and tags. A git bundle mimics a remote, enabling
-fetching, pulling, and diffing between machines that
-aren&#8217;t otherwise connected.</p>
-
-<p>To create a bundle named &#8220;repo.bundle&#8221; containing
-each and every commit in the master branch:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git bundle create repo.bundle master</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Especially if you anticipate transferring more commits
-in the future, tag the current commit on master.</p>
-
-<h2>Clone the Bundle on the Second Machine</h2>
-
-<p>If the repository does not already exist on the
-second machine, it&#8217;s easiest to clone directly from
-the bundle.</p>
-
-<p>To clone into the directory &#8220;myRepo&#8221; and check out
-the branch master:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git clone repo.bundle myRepo -b master</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Verify the master branch. My preferred method is
-viewing a graph of the commits:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git log --oneline --decorate --graph</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Transferring Additional Commits</h2>
-
-<p>We could once again bundle the entirety of the master
-branch and do a git clone on the second machine, but
-we&#8217;d sacrifice any additional work on that box.
-Instead, bundle master starting from the previous
-bundle&#8217;s most recent commit:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git bundle create more.bundle lastBundleTag..master</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>On the second machine, verify the bundle then pull
-the contents into master:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git bundle verify more.bundle</span>
-</span><span class='line'><span class="go">git pull more.bundle master</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Once again, verify the master branch and the recently
-transferred commits:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='console'><span class='line'><span class="go">git log --oneline --decorate --graph</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Conclusion</h2>
-
-<p>Using git bundle makes version controlling repositories
-across unconnected machines simple. Additionally, all
-the elements of the git workflow remain at your beck
-and call. For example, consider creating a long
-running branch for changes that are only applicable to
-the second machine for reasons such as easy diffing
-between machines.</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://EvanOxfeld.github.com/blog/2014/05/01/should-node-unzip-have-a-future/" data-via="EvanOxfeld" data-counturl="http://EvanOxfeld.github.com/blog/2014/05/01/should-node-unzip-have-a-future/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/01/30/sneakernet-solved-with-git-bundle/" title="Previous Post: Sneakernet Solved with Git Bundle">&laquo; Sneakernet Solved with Git Bundle</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     
@@ -286,7 +189,7 @@ between machines.</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/EvanOxfeld">@EvanOxfeld</a> on GitHub
@@ -316,7 +219,7 @@ between machines.</p>
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -335,6 +238,7 @@ between machines.</p>
 
   
 </aside>
+
 
     </div>
   </div>

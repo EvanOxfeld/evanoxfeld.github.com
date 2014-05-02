@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: open source | Evan Oxfeld]]></title>
+  <link href="http://EvanOxfeld.github.com/blog/categories/open-source/atom.xml" rel="self"/>
+  <link href="http://EvanOxfeld.github.com/"/>
+  <updated>2014-05-01T22:47:55-04:00</updated>
+  <id>http://EvanOxfeld.github.com/</id>
+  <author>
+    <name><![CDATA[Evan Oxfeld]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Should Node-Unzip Have a Future?]]></title>
+    <link href="http://EvanOxfeld.github.com/blog/2014/05/01/should-node-unzip-have-a-future/"/>
+    <updated>2014-05-01T21:18:00-04:00</updated>
+    <id>http://EvanOxfeld.github.com/blog/2014/05/01/should-node-unzip-have-a-future</id>
+    <content type="html"><![CDATA[<p><strong><em>Cross posted from <a href="https://github.com/EvanOxfeld/node-unzip/issues/50">https://github.com/EvanOxfeld/node-unzip/issues/50</a></em></strong></p>
+
+<p>I continue to be floored by the response to <a href="https://github.com/EvanOxfeld/node-unzip">node-unzip</a>. While the original implementation was written on a lark, I carried on as a means to better understand streams, arguably the killer feature of NodeJS. Since that time, I've changed companies, ceased personally using this library, and experienced a number of major life events, particularly becoming a father.</p>
+
+<p>I also learned that the zip format is problematic and cannot be perfectly streamed -- see this Apache <a href="http://commons.apache.org/proper/commons-compress/zip.html">doc</a>. That said, if despite the major hangups as well as quality non-streaming NodeJS modules, such as decompress, there's continued interest in this project, I'll work to take the project to a stable 1.0.0, merge outstanding pull requests, and most importantly, seek collaborators who use this library in production.</p>
+
+<p>Thank you and let me know your thoughts on the <a href="https://github.com/EvanOxfeld/node-unzip/issues/50">project on GitHub</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>
