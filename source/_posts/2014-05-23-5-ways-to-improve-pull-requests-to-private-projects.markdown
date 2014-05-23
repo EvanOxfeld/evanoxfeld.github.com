@@ -3,7 +3,7 @@ layout: post
 title: "5 Ways to Improve Pull Requests to Private Projects"
 date: 2014-05-23 16:00
 comments: false
-categories: [pull requests, github, github enterprise]
+categories: [pull requests, github, github enterprise, git]
 ---
 
 At [VBrick](http://www.vbrick.com) we've hosted our private projects on GitHub
@@ -16,7 +16,8 @@ or merge a pull request.
 The following are some best practices I've learned from my experience using GitHub for
 private as well as open source projects. Many open source lessons carry over -- 
 if you think about it, submitting a pull request to Twitter Bootstrap to add
-semicolons to their JavaScript and submitting sweeping coding style changes to your
+semicolons to their JavaScript<small>[[1](https://github.com/twbs/bootstrap/issues/3057)]</small>
+and submitting sweeping coding style changes to your
 team's project are both wastes of time.
 
 I assume the reader has basic working knowledge of git, GitHub, and what makes
@@ -67,3 +68,4 @@ Resist the temptation to work on separate branches in a shared repository. As
 a developer, it's easier to experiment when forks are treated as sandboxes and
 branches in forks considered public history is the exception rather than the rule.
 
+<small>1. [bootstrap-dropdown.js clearMenus() needs ; at the end](https://github.com/twbs/bootstrap/issues/3057)</small>
