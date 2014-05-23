@@ -41,7 +41,8 @@ particularly if the pull request is large or if the issue's implementation is no
 obvious.
 
 When possible, don't submit a massive pull request. Submit separate pull requests for
-each logical set of changes. Strive for atomic commits within the pull request.
+each logical set of changes. Within the pull request, strive for commits that are atomic --
+that is, the commit represents a single refactoring or distinct change to the system.
 
 ## Collaborate before the pull request
 
