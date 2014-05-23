@@ -4,7 +4,7 @@
   <title><![CDATA[Evan Oxfeld]]></title>
   <link href="http://EvanOxfeld.github.com/atom.xml" rel="self"/>
   <link href="http://EvanOxfeld.github.com/"/>
-  <updated>2014-05-23T14:57:13-04:00</updated>
+  <updated>2014-05-23T15:19:12-04:00</updated>
   <id>http://EvanOxfeld.github.com/</id>
   <author>
     <name><![CDATA[Evan Oxfeld]]></name>
@@ -53,7 +53,8 @@ particularly if the pull request is large or if the issue&#8217;s implementation
 obvious.</p>
 
 <p>When possible, don&#8217;t submit a massive pull request. Submit separate pull requests for
-each logical set of changes. Strive for atomic commits within the pull request.</p>
+each logical set of changes. Within the pull request, strive for commits that are atomic &#8211;
+that is, the the commit represents a single refactoring or distinct change to the system.</p>
 
 <h2>Collaborate before the pull request</h2>
 
